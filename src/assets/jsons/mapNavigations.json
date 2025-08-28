@@ -1,0 +1,22 @@
+[
+    {
+        "mapNavigationID": 1,
+        "name": "Meama Collects",
+        "icon": "collect.png"
+    },
+    {
+        "mapNavigationID": 2,
+        "name": "Meama Droppers",
+        "icon": "vending-machine.png"
+    },
+    {
+        "mapNavigationID": 3,
+        "name": "Meama Spaces",
+        "icon": "space.png"
+    },
+    {
+        "mapNavigationID": 4,
+        "name": "Voronoi",
+        "icon": "voronoi.png"
+    }
+]
