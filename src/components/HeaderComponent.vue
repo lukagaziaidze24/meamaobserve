@@ -9,6 +9,7 @@
 </template>
 <style lang="scss">
 .logo-wrapper{
+    z-index: 50;
     isolation: isolate;
     position: absolute;
     top: 0.2em;

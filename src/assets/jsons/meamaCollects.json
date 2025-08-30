@@ -1,0 +1,36 @@
+[
+    {
+        "type": {
+            "typeID": 1,
+            "typeName": "Meama Collect"
+        },
+        "address": "agmasheneblis 12",
+        "latLng": {
+            "lat": 42.01674161706719,
+            "lng": 44.070112500000015
+        },
+        "sold": {
+            "quantity": 20,
+            "quantityPercentage": 30,
+            "price": 134,
+            "pricePercentage": 27
+        }
+    },
+    {
+        "type": {
+            "typeID": 1,
+            "typeName": "Meama Collect"
+        },
+        "address": "bakhtrionis 112",
+        "latLng": {
+            "lat": 42.11679161706719,
+            "lng": 44.570192500000015
+        },
+        "sold": {
+            "quantity": 20,
+            "quantityPercentage": 30,
+            "price": 134,
+            "pricePercentage": 27
+        }
+    }
+]
