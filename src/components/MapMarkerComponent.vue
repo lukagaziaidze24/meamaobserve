@@ -1,11 +1,15 @@
 <template>
 <div class="map-marker-wrapper">
-    <img class="map-marker-icon" width="32px" height="32px" src="@/assets/images/mapNavigation/collect.png" alt="meama collect">
+    <img class="map-marker-icon" width="32px" height="32px" :src="markerIconAddress" alt="meama collect">
+
+
     <div class="map-marker-content-wrapper">
-        <article class="d-flex align-items-start justify-content-between">
+        <slot name="markerDetailedInfo"/>
+        
+        <!-- <article class="d-flex align-items-start justify-content-between">
             <div class="d-flex flex-column align-items-start">
                 <h5 class="large-text-size">
-                    Meama Collect
+                    Meama Collect askjdh asdkj
                 </h5>
                 <p class="standard-text-size">
                     ბახტრიონის 17 ნომერი.
@@ -56,13 +60,15 @@
                     </tr>
                 </tbody>
             </table>
-        </article>
+        </article> -->
     </div>
 </div>
 </template>
 <script>
 export default{
-    
+    props: {
+        markerIconAddress: String,
+    },
 }
 </script>
 <style lang="scss">
@@ -87,6 +93,7 @@ export default{
         grid-template-rows: 1fr;
         padding: 1em;
         border-radius: 25px;
+        cursor:auto;
     }
     .map-marker-icon{
         position: sticky; // sticky towards .map-marker-wrapper

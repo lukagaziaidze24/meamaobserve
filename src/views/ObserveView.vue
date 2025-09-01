@@ -32,7 +32,7 @@
 
 
 
-    <div class="map-marker-wrapper">
+    <!-- <div class="map-marker-wrapper">
         <img class="map-marker-icon" width="32px" height="32px" src="@/assets/images/mapNavigation/collect.png" alt="meama collect">
         <div class="map-marker-content-wrapper">
             <article class="d-flex align-items-start justify-content-between">
@@ -91,7 +91,7 @@
                 </table>
             </article>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -239,52 +239,52 @@ export default {
         }
     }
 }
-.map-marker-wrapper{
-    margin: 0 auto;
-    isolation: isolate;
-    cursor: pointer;
-    width: fit-content;
-    max-width: 600px;
-    border-radius: 45%;
-    background-color: var(--third-background-color);
-    padding: 0.8em;
-    position: relative;
-    display: grid;
-    grid-template-columns: 0fr;
-    grid-template-rows: 0fr;
-    transform-origin: center;
+// .map-marker-wrapper{
+//     margin: 0 auto;
+//     isolation: isolate;
+//     cursor: pointer;
+//     width: fit-content;
+//     max-width: 600px;
+//     border-radius: 45%;
+//     background-color: var(--third-background-color);
+//     padding: 0.8em;
+//     position: relative;
+//     display: grid;
+//     grid-template-columns: 0fr;
+//     grid-template-rows: 0fr;
+//     transform-origin: center;
 
-    transition: all 0.3s ease-out;
-    &:hover{
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-        padding: 1em;
-        border-radius: 25px;
-    }
-    .map-marker-icon{
-        position: sticky; // sticky towards .map-marker-wrapper
-        bottom: 100%;
-        left: 100%;
-        z-index: 1;
-    }
-    .map-marker-content-wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-        overflow: hidden;
-        white-space: nowrap;
-        table, th, td {
-            border: 1px solid black;
-            border-radius: 10px !important;    
-            border-collapse: collapse;
-        }
-        th, td{
-            padding: 0.1em;
-        }
-    }
+//     transition: all 0.3s ease-out;
+//     &:hover{
+//         grid-template-columns: 1fr;
+//         grid-template-rows: 1fr;
+//         padding: 1em;
+//         border-radius: 25px;
+//     }
+//     .map-marker-icon{
+//         position: sticky; // sticky towards .map-marker-wrapper
+//         bottom: 100%;
+//         left: 100%;
+//         z-index: 1;
+//     }
+//     .map-marker-content-wrapper{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: stretch;
+//         justify-content: center;
+//         grid-column: 1 / 2;
+//         grid-row: 1 / 2;
+//         overflow: hidden;
+//         white-space: nowrap;
+//         table, th, td {
+//             border: 1px solid black;
+//             border-radius: 10px !important;    
+//             border-collapse: collapse;
+//         }
+//         th, td{
+//             padding: 0.1em;
+//         }
+//     }
+// }
 
-}
 </style>
