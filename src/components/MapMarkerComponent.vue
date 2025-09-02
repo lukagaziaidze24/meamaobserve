@@ -1,9 +1,12 @@
 <template>
 <div class="map-marker-wrapper">
+    <!-- <div class="map-marker-icon">
+        <img width="32px" height="32px" :src="markerIconAddress" alt="meama collect">
+    </div> -->
     <img class="map-marker-icon" width="32px" height="32px" :src="markerIconAddress" alt="meama collect">
 
 
-    <div class="map-marker-content-wrapper">
+    <div class="map-marker-content-wrapper common-scrollbar pe-3">
         <slot name="markerDetailedInfo"/>
         
         <!-- <article class="d-flex align-items-start justify-content-between">
@@ -73,6 +76,7 @@ export default{
 </script>
 <style lang="scss">
 .map-marker-wrapper{
+    max-height: 400px;
     margin: 0 auto;
     isolation: isolate;
     cursor: pointer;
@@ -94,6 +98,12 @@ export default{
         padding: 1em;
         border-radius: 25px;
         cursor:auto;
+        .map-marker-content-wrapper{
+            overflow-y: auto;
+        }
+        .map-marker-icon{
+            margin-right: 1.5em;
+        }
     }
     .map-marker-icon{
         position: sticky; // sticky towards .map-marker-wrapper

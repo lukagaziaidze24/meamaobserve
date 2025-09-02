@@ -1,6 +1,8 @@
 :root{
     --primary-background-color: #161616;
     --secondary-background-color: #fffcf9;
+    --third-background-color: #cf8934;
+    --fourth-background-color: #d6a86f;
     --black-text-color: #171717;
     --white-text-color: #fffcf9;
     --third-background-color: #a35020;
@@ -67,4 +69,21 @@ body{
 }
 .br-25{
     border-radius: 25px;
+}
+
+
+
+.common-scrollbar::-webkit-scrollbar{
+    width: 8px;
+    border-radius: 8px;
+    background-color: var(--secondary-background-color);
+    padding-inline: 5px;
+    scroll-behavior: contain;
+    // scroll-padding-inline: 2em;
+
+}
+.common-scrollbar::-webkit-scrollbar-thumb{
+    background-color: var(--primary-background-color);
+    border-radius: 6px;
+    border: 4px solid var(--primary-background-color);
 }

@@ -62,9 +62,15 @@ export default {
                 });
                 marker.addEventListener('mouseenter', (event) => {
                     marker.zIndex = 3;
+                    toRaw(this.map).setOptions({
+                        gestureHandling: "none",
+                    });
                 });
                 marker.addEventListener('mouseleave', (event) => {
                     marker.zIndex = 1;
+                    toRaw(this.map).setOptions({
+                        gestureHandling: null,
+                    });
                 });
                 this.loadedMarkersLocalArray.push(marker);
             });
@@ -93,18 +99,26 @@ export default {
                 center: this.center,
                 zoom: 2,
                 mapId: "DEMO_MAP_ID",
-                zoomControl: true,
+                zoomControl: true, // was true
                 mapTypeControl: false,
-                scaleControl: true,
+                scaleControl: true, // was true
                 streetViewControl: false,
-                rotateControl: true,
-                fullscreenControl: true,
+                rotateControl: true, // was true
+                fullscreenControl: true, // was true
                 // minZoom: 8,
                 mapTypeId: "roadmap",
                 restriction: {
                     latLngBounds: allowedBounds,
                     strictBounds: true,
-                }
+                },
+
+
+
+                // disableDefaultUI: true,       // Removes zoom buttons, street view etc.
+                // gestureHandling: "none",      // Disables scroll, drag, and touch gestures
+                // draggable: false,             // Prevents dragging
+                // scrollwheel: false,           // Prevents zooming with mouse wheel
+                // disableDoubleClickZoom: true, // Prevents zoom on double click
             });
             google.maps.event.addListenerOnce(toRaw(this.map), 'idle', () => {
             });

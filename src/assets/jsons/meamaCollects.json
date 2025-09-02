@@ -11,9 +11,47 @@
         },
         "sold": {
             "quantity": 20,
-            "quantityPercentage": 30,
+            "quantityPercentage": 36,
             "price": 134,
-            "pricePercentage": 27
+            "pricePercentage": 27,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ]
         }
     },
     {
@@ -29,8 +67,46 @@
         "sold": {
             "quantity": 20,
             "quantityPercentage": 30,
-            "price": 134,
-            "pricePercentage": 27
+            "price": 49,
+            "pricePercentage": 5,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ]
         }
     }
 ]
