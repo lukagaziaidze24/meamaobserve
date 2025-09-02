@@ -56,7 +56,7 @@ export default {
                 const marker = new this.advancedMarker({
                     map: toRaw(this.map),
                     position: markerObj.latLng, 
-                    content: this.buildMarkerContent(),
+                    content: this.buildMarkerContent(markerObj),
                     title: markerObj.type.typeName,
                     zIndex: 1,
                 });
@@ -69,91 +69,10 @@ export default {
                 this.loadedMarkersLocalArray.push(marker);
             });
         },
-        buildMarkerContent(){
+        buildMarkerContent(markerObj){
             let mapMarkerWrapper = document.createElement("div");
+            let markerApp = markerObj.markerAppFactory();
             
-            // const marker = createApp(MapMarkerComponent);
-            // marker.mount(mapMarkerWrapper);
-
-            // jsx error
-            // mapMarkerWrapper.innerHTML = `
-            //     ${<MapMarkerComponent></MapMarkerComponent>}
-            // `;
-
-
-
-
-            // jsx error
-            const markerApp = createApp(() => (
-                <MapMarkerComponent markerIconAddress={collectIcon}
-                    v-slots={{
-                        markerDetailedInfo: () => (
-                            <div class="d-flex flex-column align-items-stretch">
-                                <article class="d-flex align-items-start justify-content-between">
-                                    <div class="d-flex flex-column align-items-start">
-                                        <h5 class="large-text-size">
-                                            Meama Collect
-                                        </h5>
-                                        <p class="standard-text-size">
-                                            ბახტრიონის 17 ნომერი.
-                                        </p>
-                                    </div>
-                                </article>
-                                <hr/>
-                                <article class="d-flex flex-column align-items-start row-gap-2">
-                                    <h5 class="before-large-text-size">
-                                        ობიექტის ზოგადი სტატისტიკა
-                                    </h5>
-                                    <table style="width: 100%">
-                                        <thead class="after-standard-text-size">
-                                            <tr>
-                                                <th>
-                                                    პარამეტრი
-                                                </th>
-                                                <th>
-                                                    რაოდენობა
-                                                </th>
-                                                <th>
-                                                    მთლიანი რაოდენობის
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="standard-text-size">
-                                                <td>
-                                                    სულ გაყიდული
-                                                </td>
-                                                <td>
-                                                    30
-                                                </td>
-                                                <td>
-                                                    20%
-                                                </td>
-                                            </tr>
-                                            <tr class="standard-text-size">
-                                                <td>
-                                                    სულ ღირებულება
-                                                </td>
-                                                <td>
-                                                    300ლ
-                                                </td>
-                                                <td>
-                                                    34%
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </article>
-                            </div>
-                        )
-                    }}
-                />
-            ), 
-            // {
-            //     markerIconAddress: require("@/assets/images/mapNavigation/collect.png"),
-            // }
-            );
-
             markerApp.mount(mapMarkerWrapper);
             return mapMarkerWrapper;
         },

@@ -100,11 +100,14 @@
 
 
 </template>
-<script>
+<script lang="jsx">
 import LeftGrowingAccordion from '@/components/LeftGrowingAccordion.vue';
 import mapNavigations from '@/assets/jsons/mapNavigations.json';
 import PrimaryMapComponent from '@/components/PrimaryMapComponent.vue';
 import meamaCollects from '@/assets/jsons/meamaCollects.json';
+import MapMarkerComponent from '@/components/MapMarkerComponent.vue';
+import { createApp } from 'vue';
+import collectIcon from '@/assets/images/mapNavigation/collect.png'
 
 export default {
     data(){
@@ -122,6 +125,7 @@ export default {
     components: {
         LeftGrowingAccordion,
         PrimaryMapComponent,
+        MapMarkerComponent,
     },
     mounted() {
         this.routeMountMovenment(this.$route);
@@ -167,11 +171,91 @@ export default {
 
                 switch (Number(id)) {
                     case 1:
-                        this.meamaLocationsArray.push(...meamaCollects);
+                        // this.meamaLocationsArray.push(...meamaCollects);
+                        this.meamaLocationsArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml());
                         break;
                     default:
                         break;
                 }
+            });
+        },
+        getMeamaCollectsWithMarkerJSXInnerHtml(){
+            return meamaCollects.map((meamaCollectObj) => {
+                const markerAppFactory = () => createApp(() => (
+                    <MapMarkerComponent markerIconAddress={collectIcon}
+                        v-slots={{
+                            markerDetailedInfo: () => (
+                                <div class="d-flex flex-column align-items-stretch">
+                                    <article class="d-flex align-items-start justify-content-between">
+                                        <div class="d-flex flex-column align-items-start">
+                                            <h5 class="large-text-size">
+                                                Meama Collect
+                                            </h5>
+                                            <p class="standard-text-size">
+                                                ბახტრიონის 17 ნომერი.
+                                            </p>
+                                        </div>
+                                    </article>
+                                    <hr/>
+                                    <article class="d-flex flex-column align-items-start row-gap-2">
+                                        <h5 class="before-large-text-size">
+                                            ობიექტის ზოგადი სტატისტიკა
+                                        </h5>
+                                        <table style="width: 100%">
+                                            <thead class="after-standard-text-size">
+                                                <tr>
+                                                    <th>
+                                                        პარამეტრი
+                                                    </th>
+                                                    <th>
+                                                        რაოდენობა
+                                                    </th>
+                                                    <th>
+                                                        მთლიანი რაოდენობის
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="standard-text-size">
+                                                    <td>
+                                                        სულ გაყიდული
+                                                    </td>
+                                                    <td>
+                                                        30
+                                                    </td>
+                                                    <td>
+                                                        20%
+                                                    </td>
+                                                </tr>
+                                                <tr class="standard-text-size">
+                                                    <td>
+                                                        სულ ღირებულება
+                                                    </td>
+                                                    <td>
+                                                        300ლ
+                                                    </td>
+                                                    <td>
+                                                        34%
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </article>
+                                </div>
+                            )
+                        }}
+                    />
+                ), 
+                // {
+                //     markerIconAddress: require("@/assets/images/mapNavigation/collect.png"),
+                // }
+                );
+                return {
+                    ...meamaCollectObj,
+                    markerAppFactory: markerAppFactory,
+                };
+
+
             });
         },
         mountMapNavigationFilters(){
