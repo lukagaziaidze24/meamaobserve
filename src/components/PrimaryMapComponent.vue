@@ -60,18 +60,39 @@ export default {
                     title: markerObj.type.typeName,
                     zIndex: 1,
                 });
+
                 marker.addEventListener('mouseenter', (event) => {
-                    marker.zIndex = 3;
-                    toRaw(this.map).setOptions({
+                    toRaw(this.map).setOptions({ // makes map untouchable
                         gestureHandling: "none",
+                        clickableIcons: false,
                     });
+                    
                 });
                 marker.addEventListener('mouseleave', (event) => {
-                    marker.zIndex = 1;
-                    toRaw(this.map).setOptions({
+                    toRaw(this.map).setOptions({ // makes map touchable
                         gestureHandling: null,
+                        clickableIcons: true,
                     });
                 });
+                let index = this.loadedMarkersLocalArray.length;
+                
+                marker.addListener("gmp-click", (event) => { // first click event happens from component than comes this event listener
+                    if(marker.zIndex == 3 && !marker.content.querySelector(".map-marker-wrapper").classList.contains("open")){
+                        marker.zIndex = 1;
+                    }else{
+                        marker.zIndex = 3;
+                    }
+                    let currentMarkerIndex = index;
+                    this.loadedMarkersLocalArray.toSpliced(currentMarkerIndex, 1).forEach((markerObj) => {
+                        markerObj.content.querySelector(".map-marker-wrapper").classList.remove("open");
+                        markerObj.zIndex = 1;
+
+
+                        // if(!(marker.content).isSameNode(markerObj.content)){
+                        // }
+                    });
+                });
+
                 this.loadedMarkersLocalArray.push(marker);
             });
         },
@@ -119,6 +140,8 @@ export default {
                 // draggable: false,             // Prevents dragging
                 // scrollwheel: false,           // Prevents zooming with mouse wheel
                 // disableDoubleClickZoom: true, // Prevents zoom on double click
+                // clickableIcons: false,  // prevents clicks on POIs (like businesses, parks)
+
             });
             google.maps.event.addListenerOnce(toRaw(this.map), 'idle', () => {
             });

@@ -228,7 +228,7 @@ export default {
                     <MapMarkerComponent markerIconAddress={collectIcon}
                         v-slots={{
                             markerDetailedInfo: () => (
-                                <div class="d-flex flex-column align-items-stretch mt-3">
+                                <div class="d-flex flex-column align-items-stretch">
                                     <article class="d-flex align-items-start justify-content-between">
                                         <div class="d-flex flex-column align-items-start">
                                             <h5 class="large-text-size">
@@ -284,6 +284,53 @@ export default {
                                             </tbody>
                                         </table>
                                     </article>
+                                    <hr/>
+                                    <Accordion v-slots={{
+                                        accordionHeader: () => (
+                                            <div class="d-flex align-items-center px-3 py-1">
+                                                <h5 class="before-large-text-size">
+                                                    აპარატები
+                                                </h5>
+                                            </div>
+                                        ),
+                                        additionalInfo: () => (
+                                            <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                                <article class="d-flex flex-column column-gap-2">
+                                                    <h6 class="after-standard-text-size">
+                                                        გაყიდული
+                                                    </h6>
+                                                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                        {
+                                                            meamaCollectObj.sold.coffeeMachines.map((coffeeMachine, i) => (
+                                                                <li key={i}>
+                                                                    <p class="standard-text-size">
+                                                                        {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                    </p>
+                                                                </li>
+                                                            ))
+                                                        }
+                                                    </ol>
+                                                </article>
+                                                <article class="d-flex flex-column column-gap-2">
+                                                    <h6 class="after-standard-text-size">
+                                                        მარაგში
+                                                    </h6>
+                                                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                        {
+                                                            meamaCollectObj.stock.coffeeMachines.map((coffeeMachine, i) => (
+                                                                <li>
+                                                                    <p class="standard-text-size">
+                                                                        {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                    </p>
+                                                                </li>
+                                                            ))
+                                                        }
+                                                    </ol>
+                                                </article>
+                                            </div>
+                                        )
+                                    }}>
+                                    </Accordion>
                                     <hr/>
                                     <Accordion v-slots={{
                                         accordionHeader: () => (
