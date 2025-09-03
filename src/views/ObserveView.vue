@@ -29,117 +29,6 @@
 
 
     </div>
-
-
-    <Accordion>
-        <template v-slot:accordionHeader>
-            <div class="d-flex align-items-center px-3 py-1">
-                <h5 class="before-large-text-size">
-                    აპარატები
-                </h5>
-            </div>
-        </template>
-        <template v-slot:additionalInfo>
-            <div class="d-flex align-items-start justify-content-between px-3 py-2">
-                <article class="d-flex flex-column column-gap-2">
-                    <h6 class="after-standard-text-size">
-                        გაყიდული
-                    </h6>
-                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
-                        <li>
-                            <p class="standard-text-size">
-                                ვერსეტაილი - 22
-                            </p>
-                        </li>
-                    </ol>
-                </article>
-                <article class="d-flex flex-column column-gap-2">
-                    <h6 class="after-standard-text-size">
-                        მარაგში
-                    </h6>
-                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
-                        <li>
-                            <p class="standard-text-size">
-                                ვერსეტაილი - 22
-                            </p>
-                        </li>
-                    </ol>
-                </article>
-            </div>
-
-
-        </template>
-    </Accordion>
-
-
-
-    <!-- <div class="map-marker-wrapper">
-        <img class="map-marker-icon" width="32px" height="32px" src="@/assets/images/mapNavigation/collect.png" alt="meama collect">
-        <div class="map-marker-content-wrapper">
-            <article class="d-flex align-items-start justify-content-between">
-                <div class="d-flex flex-column align-items-start">
-                    <h5 class="large-text-size">
-                        Meama Collect
-                    </h5>
-                    <p class="standard-text-size">
-                        ბახტრიონის 17 ნომერი.
-                    </p>
-                </div>
-            </article>
-            <hr>
-            <article class="d-flex flex-column align-items-start row-gap-2">
-                <h5 class="before-large-text-size">
-                    ობიექტის ზოგადი სტატისტიკა
-                </h5>
-                <table style="width: 100%">
-                    <thead class="after-standard-text-size">
-                        <tr>
-                            <th>
-                                პარამეტრი
-                            </th>
-                            <th>
-                                რაოდენობა
-                            </th>
-                            <th>
-                                მთლიანი რაოდენობის
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="standard-text-size">
-                            <td>
-                                სულ გაყიდული
-                            </td>
-                            <td>
-                                30
-                            </td>
-                            <td>
-                                20%
-                            </td>
-                        </tr>
-                        <tr class="standard-text-size">
-                            <td>
-                                სულ ღირებულება
-                            </td>
-                            <td>
-                                300ლ
-                            </td>
-                            <td>
-                                34%
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </article>
-        </div>
-    </div> -->
-
-
-
-
-
-
-
 </template>
 <script lang="jsx">
 import LeftGrowingAccordion from '@/components/LeftGrowingAccordion.vue';
@@ -299,33 +188,62 @@ export default {
                                                     <h6 class="after-standard-text-size">
                                                         გაყიდული
                                                     </h6>
-                                                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
-                                                        {
-                                                            meamaCollectObj.sold.coffeeMachines.map((coffeeMachine, i) => (
-                                                                <li key={i}>
+                                                    {
+                                                        (meamaCollectObj.sold.coffeeMachines?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.sold.coffeeMachines.map((coffeeMachine, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
+                                                                <li>
                                                                     <p class="standard-text-size">
-                                                                        {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                        ინფორმაცია ვერ მოიძებნა
                                                                     </p>
                                                                 </li>
-                                                            ))
-                                                        }
-                                                    </ol>
+                                                            </ul>
+                                                        )
+                                                    }
+
                                                 </article>
                                                 <article class="d-flex flex-column column-gap-2">
                                                     <h6 class="after-standard-text-size">
                                                         მარაგში
                                                     </h6>
-                                                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
-                                                        {
-                                                            meamaCollectObj.stock.coffeeMachines.map((coffeeMachine, i) => (
+                                                    {
+                                                        (meamaCollectObj.stock.coffeeMachines?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.stock.coffeeMachines.map((coffeeMachine, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
                                                                 <li>
                                                                     <p class="standard-text-size">
-                                                                        {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                        ინფორმაცია ვერ მოიძებნა
                                                                     </p>
                                                                 </li>
-                                                            ))
-                                                        }
-                                                    </ol>
+                                                            </ul>
+                                                        )
+                                                    }
                                                 </article>
                                             </div>
                                         )
@@ -336,7 +254,7 @@ export default {
                                         accordionHeader: () => (
                                             <div class="d-flex align-items-center px-3 py-1">
                                                 <h5 class="before-large-text-size">
-                                                    აპარატები
+                                                    კაფსულები
                                                 </h5>
                                             </div>
                                         ),
@@ -346,33 +264,215 @@ export default {
                                                     <h6 class="after-standard-text-size">
                                                         გაყიდული
                                                     </h6>
-                                                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
-                                                        {
-                                                            meamaCollectObj.sold.coffeeMachines.map((coffeeMachine, i) => (
-                                                                <li key={i}>
+                                                    {
+                                                        (meamaCollectObj.sold.capsules?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.sold.capsules.map((capsule, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {capsule.capsuleName} - {capsule.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
+                                                                <li>
                                                                     <p class="standard-text-size">
-                                                                        {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                        ინფორმაცია ვერ მოიძებნა
                                                                     </p>
                                                                 </li>
-                                                            ))
-                                                        }
-                                                    </ol>
+                                                            </ul>
+                                                        )
+                                                    }
+
                                                 </article>
                                                 <article class="d-flex flex-column column-gap-2">
                                                     <h6 class="after-standard-text-size">
                                                         მარაგში
                                                     </h6>
-                                                    <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
-                                                        {
-                                                            meamaCollectObj.stock.coffeeMachines.map((coffeeMachine, i) => (
+                                                    {
+                                                        (meamaCollectObj.stock.capsules?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.stock.capsules.map((capsule, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {capsule.capsuleName} - {capsule.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
                                                                 <li>
                                                                     <p class="standard-text-size">
-                                                                        {coffeeMachine.MachineName} - {coffeeMachine.quantity}
+                                                                        ინფორმაცია ვერ მოიძებნა
                                                                     </p>
                                                                 </li>
-                                                            ))
-                                                        }
-                                                    </ol>
+                                                            </ul>
+                                                        )
+                                                    }
+                                                </article>
+                                            </div>
+                                        )
+                                    }}>
+                                    </Accordion>
+                                    <hr/>
+                                    <Accordion v-slots={{
+                                        accordionHeader: () => (
+                                            <div class="d-flex align-items-center px-3 py-1">
+                                                <h5 class="before-large-text-size">
+                                                    აქსესუარები
+                                                </h5>
+                                            </div>
+                                        ),
+                                        additionalInfo: () => (
+                                            <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                                <article class="d-flex flex-column column-gap-2">
+                                                    <h6 class="after-standard-text-size">
+                                                        გაყიდული
+                                                    </h6>
+                                                    {
+                                                        (meamaCollectObj.sold.accessories?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.sold.accessories.map((accessory, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {accessory.accessoryName} - {accessory.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
+                                                                <li>
+                                                                    <p class="standard-text-size">
+                                                                        ინფორმაცია ვერ მოიძებნა
+                                                                    </p>
+                                                                </li>
+                                                            </ul>
+                                                        )
+                                                    }
+
+                                                </article>
+                                                <article class="d-flex flex-column column-gap-2">
+                                                    <h6 class="after-standard-text-size">
+                                                        მარაგში
+                                                    </h6>
+                                                    {
+                                                        (meamaCollectObj.stock.accessories?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.stock.accessories.map((accessory, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {accessory.accessoryName} - {accessory.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
+                                                                <li>
+                                                                    <p class="standard-text-size">
+                                                                        ინფორმაცია ვერ მოიძებნა
+                                                                    </p>
+                                                                </li>
+                                                            </ul>
+                                                        )
+                                                    }
+                                                </article>
+                                            </div>
+                                        )
+                                    }}>
+                                    </Accordion>
+                                    <hr/>
+                                    <Accordion v-slots={{
+                                        accordionHeader: () => (
+                                            <div class="d-flex align-items-center px-3 py-1">
+                                                <h5 class="before-large-text-size">
+                                                    კლასიკური ყავა
+                                                </h5>
+                                            </div>
+                                        ),
+                                        additionalInfo: () => (
+                                            <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                                <article class="d-flex flex-column column-gap-2">
+                                                    <h6 class="after-standard-text-size">
+                                                        გაყიდული
+                                                    </h6>
+                                                    {
+                                                        (meamaCollectObj.sold.classicalCoffee?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.sold.classicalCoffee.map((classicalCoffee, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {classicalCoffee.classicalCoffeeName} - {classicalCoffee.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
+                                                                <li>
+                                                                    <p class="standard-text-size">
+                                                                        ინფორმაცია ვერ მოიძებნა
+                                                                    </p>
+                                                                </li>
+                                                            </ul>
+                                                        )
+                                                    }
+
+                                                </article>
+                                                <article class="d-flex flex-column column-gap-2">
+                                                    <h6 class="after-standard-text-size">
+                                                        მარაგში
+                                                    </h6>
+                                                    {
+                                                        (meamaCollectObj.stock.classicalCoffee?.length > 0) ?
+                                                        (
+                                                            <ol class="d-flex flex-column align-items-stretch" style="list-style-type: decimal; padding-left: 1em !important;">
+                                                                {
+                                                                    meamaCollectObj.stock.classicalCoffee.map((classicalCoffee, i) => (
+                                                                        <li key={i}>
+                                                                            <p class="standard-text-size">
+                                                                                {classicalCoffee.classicalCoffeeName} - {classicalCoffee.quantity}
+                                                                            </p>
+                                                                        </li>
+                                                                    ))
+                                                                }
+                                                            </ol>
+                                                        ) : 
+                                                        (
+                                                            <ul class="d-flex flex-column align-items-stretch">
+                                                                <li>
+                                                                    <p class="standard-text-size">
+                                                                        ინფორმაცია ვერ მოიძებნა
+                                                                    </p>
+                                                                </li>
+                                                            </ul>
+                                                        )
+                                                    }
+
                                                 </article>
                                             </div>
                                         )
@@ -460,52 +560,4 @@ export default {
         }
     }
 }
-// .map-marker-wrapper{
-//     margin: 0 auto;
-//     isolation: isolate;
-//     cursor: pointer;
-//     width: fit-content;
-//     max-width: 600px;
-//     border-radius: 45%;
-//     background-color: var(--third-background-color);
-//     padding: 0.8em;
-//     position: relative;
-//     display: grid;
-//     grid-template-columns: 0fr;
-//     grid-template-rows: 0fr;
-//     transform-origin: center;
-
-//     transition: all 0.3s ease-out;
-//     &:hover{
-//         grid-template-columns: 1fr;
-//         grid-template-rows: 1fr;
-//         padding: 1em;
-//         border-radius: 25px;
-//     }
-//     .map-marker-icon{
-//         position: sticky; // sticky towards .map-marker-wrapper
-//         bottom: 100%;
-//         left: 100%;
-//         z-index: 1;
-//     }
-//     .map-marker-content-wrapper{
-//         display: flex;
-//         flex-direction: column;
-//         align-items: stretch;
-//         justify-content: center;
-//         grid-column: 1 / 2;
-//         grid-row: 1 / 2;
-//         overflow: hidden;
-//         white-space: nowrap;
-//         table, th, td {
-//             border: 1px solid black;
-//             border-radius: 10px !important;    
-//             border-collapse: collapse;
-//         }
-//         th, td{
-//             padding: 0.1em;
-//         }
-//     }
-// }
-
 </style>

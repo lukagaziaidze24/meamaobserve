@@ -31,6 +31,52 @@
                     "MachineName": "კაპუჩინატორი",
                     "quantity": 11
                 }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
+                }
             ]
         },
         "stock": {
@@ -50,6 +96,52 @@
                 {
                     "MachineName": "კაპუჩინატორი",
                     "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
                 }
             ]
         }
@@ -86,6 +178,52 @@
                     "MachineName": "კაპუჩინატორი",
                     "quantity": 11
                 }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
+                }
             ]
         },
         "stock": {
@@ -105,6 +243,52 @@
                 {
                     "MachineName": "კაპუჩინატორი",
                     "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
                 }
             ]
         }
