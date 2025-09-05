@@ -1,69 +1,10 @@
 <template>
 <div ref="mapMarkerWrapper" class="map-marker-wrapper" @click="markerClickHandler($event)">
-    <!-- <div class="map-marker-icon">
-        <img width="32px" height="32px" :src="markerIconAddress" alt="meama collect">
-    </div> -->
     <img class="map-marker-icon" width="32px" height="32px" :src="markerIconAddress" alt="meama collect">
 
 
     <div class="map-marker-content-wrapper common-scrollbar">
         <slot name="markerDetailedInfo"/>
-        
-        <!-- <article class="d-flex align-items-start justify-content-between">
-            <div class="d-flex flex-column align-items-start">
-                <h5 class="large-text-size">
-                    Meama Collect askjdh asdkj
-                </h5>
-                <p class="standard-text-size">
-                    ბახტრიონის 17 ნომერი.
-                </p>
-            </div>
-        </article>
-        <hr>
-        <article class="d-flex flex-column align-items-start row-gap-2">
-            <h5 class="before-large-text-size">
-                ობიექტის ზოგადი სტატისტიკა
-            </h5>
-            <table style="width: 100%">
-                <thead class="after-standard-text-size">
-                    <tr>
-                        <th>
-                            პარამეტრი
-                        </th>
-                        <th>
-                            რაოდენობა
-                        </th>
-                        <th>
-                            მთლიანი რაოდენობის
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="standard-text-size">
-                        <td>
-                            სულ გაყიდული
-                        </td>
-                        <td>
-                            30
-                        </td>
-                        <td>
-                            20%
-                        </td>
-                    </tr>
-                    <tr class="standard-text-size">
-                        <td>
-                            სულ ღირებულება
-                        </td>
-                        <td>
-                            300ლ
-                        </td>
-                        <td>
-                            34%
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </article> -->
     </div>
 </div>
 </template>

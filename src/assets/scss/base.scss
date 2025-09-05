@@ -1,11 +1,11 @@
 :root{
     --primary-background-color: #161616;
     --secondary-background-color: #fffcf9;
-    --third-background-color: #cf8934;
+    --third-background-color: #a35020;
     --fourth-background-color: #d6a86f;
     --black-text-color: #171717;
     --white-text-color: #fffcf9;
-    --third-background-color: #a35020;
+    --coffee-text-color: #d6a86f;
 
 }
 body{
@@ -15,6 +15,14 @@ body{
     width: 100%;
     max-width: 1560px;
     margin: 0 auto;
+}
+
+.extra-small-text-size{
+    font-family: "roboto-400";
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 300;
+    color: var(--black-text-color);
 }
 
 .standard-text-size{
@@ -59,6 +67,9 @@ body{
 .black-text{
     color: var(--black-text-color);
 }
+.coffee-text-color{
+    color: var(--coffee-text-color);
+}
 
 
 .br-10{
@@ -86,4 +97,10 @@ body{
     background-color: var(--primary-background-color);
     border-radius: 6px;
     border: 4px solid var(--primary-background-color);
+}
+
+
+.common-primary-decimal-ol-style{
+    list-style-type: decimal !important;
+    padding-left: 1em !important;
 }

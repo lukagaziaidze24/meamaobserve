@@ -1,22 +1,21 @@
 [
     {
         "type": {
-            "typeID": 1,
-            "typeName": "Meama Collect",
-            "isFranchise": true
+            "typeID": 3,
+            "typeName": "Meama Space"
         },
         "address": "agmasheneblis 12",
         "phone": "551312950",
         "email": "lukagaziaidze@gmail.com",
         "latLng": {
-            "lat": 42.01674161706719,
-            "lng": 44.070112500000015
+            "lat": 42.00674161706719,
+            "lng": 44.170112500000015
         },
         "sold": {
-            "quantity": 20,
+            "quantity": 22,
             "quantityPercentage": 36,
-            "price": 134,
-            "pricePercentage": 27,
+            "price": 1125,
+            "pricePercentage": 48,
             "coffeeMachines": [
                 {
                     "MachineName": "ვერსეტაილი",
@@ -168,22 +167,21 @@
     },
     {
         "type": {
-            "typeID": 1,
-            "typeName": "Meama Collect",
-            "isFranchise": false
+            "typeID": 3,
+            "typeName": "Meama Space"
         },
         "address": "bakhtrionis 112",
         "phone": "551312950",
         "email": "lukagaziaidze@gmail.com",
         "latLng": {
-            "lat": 42.11679161706719,
-            "lng": 44.570192500000015
+            "lat": 42.21679161706719,
+            "lng": 43.990192500000015
         },
         "sold": {
-            "quantity": 20,
-            "quantityPercentage": 30,
+            "quantity": 33,
+            "quantityPercentage": 45,
             "price": 49,
-            "pricePercentage": 5,
+            "pricePercentage": 67,
             "coffeeMachines": [
                 {
                     "MachineName": "ვერსეტაილი",
