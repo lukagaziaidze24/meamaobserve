@@ -20,7 +20,8 @@ export default {
             advancedMarker: null,
 
             loadedMarkersLocalArray: [],
-            loadedMarkersWorldCoordinatesLocalArray: [],
+            loadedMarkersWorldCoordinatesArraysLocalObj: {},
+            loadedVoronoiDiagramsPolygonArraysObj: {}
         }
     },
     components: {
@@ -35,6 +36,10 @@ export default {
             type: Array,
             default: [],
         },
+        isVoronoiEnabled: {
+            type: Boolean,
+            default: false,
+        },
     },
     watch: {
         markersArray: {
@@ -43,8 +48,8 @@ export default {
                     this.loadedMarkersLocalArray.forEach((marker) => {
                         marker.setMap(null);
                     });
+                   
                     this.loadedMarkersLocalArray = [];
-                    this.loadedMarkersWorldCoordinatesLocalArray = [];
                     this.loadMarkers();
                 }
             },
@@ -99,6 +104,20 @@ export default {
             // });
 
         },
+        
+        drawSinglePolygon(coordinatesArray){
+            const polygon = new google.maps.Polygon({
+                paths: coordinatesArray,
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35,
+            });
+
+            polygon.setMap(toRaw(this.map));
+            return polygon;
+        },
 
         worldToLatLng(worldPoint){
             let projection = toRaw(this.map).getProjection();
@@ -124,20 +143,131 @@ export default {
         getWorldCoordinateFromLatLng(lat, lng){
             let latLng = new google.maps.LatLng(lat, lng);
             let worldPoint = this.latLngToWorld(latLng);
-            // return [
-            //     worldPoint.x,
-            //     worldPoint.y,
-            // ];
-            return worldPoint;
+            return [
+                worldPoint.x,
+                worldPoint.y,
+            ];
+            // return worldPoint;
         },
         
-        loadMarkers(){
+        removeVoronoiDiagrams(){
+            this.loadedMarkersWorldCoordinatesArraysLocalObj = {};
+            Object.keys(this.loadedVoronoiDiagramsPolygonArraysObj).forEach((voronoiNameKey) => {
+                this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey].forEach((polygon) => {
+                    google.maps.event.clearInstanceListeners(polygon);
+                    toRaw(polygon).setMap(null);
+                    // polygon = null;
+                });
+                delete this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey];
+            });
+            this.loadedVoronoiDiagramsPolygonArraysObj = {};
+        },
+        renderVoronoiDiagram(){
+            this.removeVoronoiDiagrams();
+            this.loadedMarkersWorldCoordinatesArraysLocalObj = {};
+            this.loadedVoronoiDiagramsPolygonArraysObj = {};
             this.markersArray.forEach((markerObj, i) => {
-                this.loadedMarkersWorldCoordinatesLocalArray.push(this.getWorldCoordinateFromLatLng(markerObj.latLng.lat, markerObj.latLng.lng));
-                // temp.push(this.getLatLngFromWorldCoordinates(this.loadedMarkersWorldCoordinatesLocalArray[i].x, this.loadedMarkersWorldCoordinatesLocalArray[i].y));
+                if(!this.loadedMarkersWorldCoordinatesArraysLocalObj.hasOwnProperty(markerObj.voronoiName)){
+                    this.loadedMarkersWorldCoordinatesArraysLocalObj[markerObj.voronoiName] = {
+                        points: [],
+                        limits: markerObj.worldCoordinateLimits,
+                    };
+                }
+                this.loadedMarkersWorldCoordinatesArraysLocalObj[markerObj.voronoiName].points.push(
+                    this.getWorldCoordinateFromLatLng(markerObj.latLng.lat, markerObj.latLng.lng)
+                );
+            });
+            
+            Object.keys(this.loadedMarkersWorldCoordinatesArraysLocalObj).forEach((voronoiNameKey) => {
+                const delaunay = d3.Delaunay.from(this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].points);
+                const voronoi = delaunay.voronoi(this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].limits);
+    
+                for(let i = 0; i < this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].points.length; i++){
+                    if(!this.loadedVoronoiDiagramsPolygonArraysObj.hasOwnProperty(voronoiNameKey)){
+                        this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey] = [];
+                    }
+                    this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey].push(
+                        this.drawSinglePolygon(
+                            voronoi.cellPolygon(i).map((worldCoordinateFromVoronoi) => {
+                                return this.getLatLngFromWorldCoordinates(worldCoordinateFromVoronoi[0], worldCoordinateFromVoronoi[1])
+                            })
+                        )
+                    );
+                }
+
+            });
+
+
+
+
+
+
+
+
+
+            // await new google.maps.LatLng(40.478072, 38.492964),
+            //     await new google.maps.LatLng(44.254719, 48.130206) 
+
+            // let latLng = this.getWorldCoordinateFromLatLng(40.478072, 38.492964);
+            // let latLng2 = this.getWorldCoordinateFromLatLng(44.254719, 48.130206);
+
+
+            // console.log(latLng);
+            // console.log(latLng2);
+            
+            
+            // console.log(voronoi.circumcenters);
+            // for(let i = 0; i < voronoi.circumcenters.length; i+=2){
+            //     let latLng = this.getLatLngFromWorldCoordinates(voronoi.circumcenters[i], voronoi.circumcenters[i + 1]);
+
+            //     const marker = new this.advancedMarker({
+            //         map: toRaw(this.map),
+            //         position: latLng, 
+            //         zIndex: 10,
+            //     });
+            // }
+
+            
+            // this.loadedMarkersWorldCoordinatesArraysLocalObj.forEach((worldCoords) => {
+            //     let latLng = this.getLatLngFromWorldCoordinates(worldCoords[0], worldCoords[1]);
+
+            //     const marker = new this.advancedMarker({
+            //         map: toRaw(this.map),
+            //         position: latLng, 
+            //         zIndex: 10,
+            //     });
+            // });
+
+            // for(let i = 0; i < this.loadedMarkersWorldCoordinatesArraysLocalObj.length; i++){
+            //     console.log(voronoi.cellPolygon(i));
+            //     voronoi.cellPolygon(i).forEach((worldBounds) => {
+            //         let latLng = this.getLatLngFromWorldCoordinates(worldBounds[0], worldBounds[1]);
+            //         const marker = new this.advancedMarker({
+            //             map: toRaw(this.map),
+            //             position: latLng, 
+            //             zIndex: 10,
+            //         });
+            //     });
                 
-                // console.log(this.loadedMarkersWorldCoordinatesLocalArray);
-                
+            // }
+
+
+
+
+
+            // console.log(voronoi.cellPolygon(0));
+            
+
+            
+        },
+
+        loadMarkers(){
+            if(this.isVoronoiEnabled){
+                this.renderVoronoiDiagram();
+            }else{
+                this.removeVoronoiDiagrams();
+            }
+            this.markersArray.forEach((markerObj, i) => {
 
                 const marker = new this.advancedMarker({
                     map: toRaw(this.map),
@@ -205,9 +335,10 @@ export default {
             // this.infoWindowElement = new this.infoWindow({
             //     maxWidth: 250,
             // });
-            var allowedBounds = await new google.maps.LatLngBounds(
-                await new google.maps.LatLng(40.478072, 38.492964),
-                await new google.maps.LatLng(44.254719, 48.130206) 
+
+            var allowedBounds = await new google.maps.LatLngBounds( 
+                await new google.maps.LatLng(40.478072, 38.492964),//[155.3727744, 96.47090904724845] in world coordinates
+                await new google.maps.LatLng(44.254719, 48.130206) //[162.22592426666665, 92.83429901034376] in world coordinates
             );
             this.map = await new google.maps.Map(document.getElementById("map"), {
                 center: this.center,

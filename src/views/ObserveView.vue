@@ -1,7 +1,7 @@
 <template>
     <div class="observer-page-wrapper">
         <main class="map-wrapper">
-            <PrimaryMapComponent :markersArray="meamaLocationsArray">
+            <PrimaryMapComponent :markersArray="meamaLocationsArray" :isVoronoiEnabled="isVoronoiEnabled">
 
             </PrimaryMapComponent>
         </main>
@@ -56,7 +56,12 @@ export default {
                 mapNavigationFilters: [], 
             },
             mapNavigationData: [],
+
+            // for map markers>>
             meamaLocationsArray: [], 
+
+            // for voronoi >>
+            isVoronoiEnabled: false,
         }
     },
     components: {
@@ -105,25 +110,32 @@ export default {
         },
         getMeamaLocations(){
             this.meamaLocationsArray = [];
+            let tempArray = [];
+            this.isVoronoiEnabled = false;
+
             this.mapNavigationFiltersObj.mapNavigationFilters.forEach((id) => {
 
                 switch (Number(id)) {
                     case 1:
-                        this.meamaLocationsArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaCollects, collectIcon));
+                        tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaCollects, collectIcon));
                         break;
                     case 2:
-                        this.meamaLocationsArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaDroppers, vendingMachine));
+                        tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaDroppers, vendingMachine));
                         break;
                     case 3:
-                        this.meamaLocationsArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaSpaces, spaceIcon));
+                        tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaSpaces, spaceIcon));
+                        break;
+                    case 4:
+                        this.isVoronoiEnabled = true;
                         break;
                     default:
                         break;
-                }
-            });
+                    }
+                });
+                this.meamaLocationsArray = [...tempArray];
         },
         getMeamaCollectsWithMarkerJSXInnerHtml(meamaLocations, icon){
-            return meamaLocations.map((meamaCollectObj) => {
+            return meamaLocations.map((meamaLocationObj) => {
                 const markerAppFactory = () => createApp(() => (
                     <MapMarkerComponent markerIconAddress={icon}
                         v-slots={{
@@ -133,10 +145,10 @@ export default {
                                         <div class="d-flex flex-column align-items-start">
                                             <div class="d-flex align-items-center gap-3">
                                                 <h5 class="large-text-size">
-                                                    {meamaCollectObj.type.typeName}
+                                                    {meamaLocationObj.type.typeName}
                                                 </h5>
                                                 {
-                                                    (meamaCollectObj.type.isFranchise && meamaCollectObj.type.typeID == 1) &&
+                                                    (meamaLocationObj.type.isFranchise && meamaLocationObj.type.typeID == 1) &&
                                                     (
                                                         <h6 class="large-text-size coffee-text-color">
                                                             Franchise
@@ -145,19 +157,19 @@ export default {
                                                 }
                                             </div>
                                             <p class="standard-text-size">
-                                                {meamaCollectObj.address}
+                                                {meamaLocationObj.address}
                                             </p>
                                             <div class="d-flex align-items-center column-gap-3">
                                                 <article class="d-flex align-items-center gap-1">
                                                     <h6 class="standard-text-size">ტელ:</h6>
                                                     <p class="extra-small-text-size">
-                                                        {meamaCollectObj.phone}
+                                                        {meamaLocationObj.phone}
                                                     </p>
                                                 </article>
                                                 <article class="d-flex align-items-center gap-1">
                                                     <h6 class="standard-text-size">email:</h6>
                                                     <p class="extra-small-text-size">
-                                                        {meamaCollectObj.email}
+                                                        {meamaLocationObj.email}
                                                     </p>
                                                 </article>
                                             </div>
@@ -188,10 +200,10 @@ export default {
                                                         სულ გაყიდული
                                                     </td>
                                                     <td>
-                                                        {meamaCollectObj.sold.quantity}
+                                                        {meamaLocationObj.sold.quantity}
                                                     </td>
                                                     <td>
-                                                        {meamaCollectObj.sold.quantityPercentage}%
+                                                        {meamaLocationObj.sold.quantityPercentage}%
                                                     </td>
                                                 </tr>
                                                 <tr class="standard-text-size">
@@ -199,17 +211,17 @@ export default {
                                                         სულ ღირებულება
                                                     </td>
                                                     <td>
-                                                        {meamaCollectObj.sold.price}ლარი
+                                                        {meamaLocationObj.sold.price}ლარი
                                                     </td>
                                                     <td>
-                                                        {meamaCollectObj.sold.pricePercentage}%
+                                                        {meamaLocationObj.sold.pricePercentage}%
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </article>
                                     {
-                                        (meamaCollectObj.type.typeID == 3) &&
+                                        (meamaLocationObj.type.typeID == 3) &&
                                         (
                                             <div>
                                                 <hr/>
@@ -228,11 +240,11 @@ export default {
                                                                     გაყიდული
                                                                 </h6>
                                                                 {
-                                                                    (meamaCollectObj.sold.coffeeMachines?.length > 0) ?
+                                                                    (meamaLocationObj.sold.coffeeMachines?.length > 0) ?
                                                                     (
                                                                         <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                             {
-                                                                                meamaCollectObj.sold.coffeeMachines.map((coffeeMachine, i) => (
+                                                                                meamaLocationObj.sold.coffeeMachines.map((coffeeMachine, i) => (
                                                                                     <li key={i}>
                                                                                         <p class="standard-text-size">
                                                                                             {coffeeMachine.MachineName} - {coffeeMachine.quantity}
@@ -259,11 +271,11 @@ export default {
                                                                     მარაგში
                                                                 </h6>
                                                                 {
-                                                                    (meamaCollectObj.stock.coffeeMachines?.length > 0) ?
+                                                                    (meamaLocationObj.stock.coffeeMachines?.length > 0) ?
                                                                     (
                                                                         <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                             {
-                                                                                meamaCollectObj.stock.coffeeMachines.map((coffeeMachine, i) => (
+                                                                                meamaLocationObj.stock.coffeeMachines.map((coffeeMachine, i) => (
                                                                                     <li key={i}>
                                                                                         <p class="standard-text-size">
                                                                                             {coffeeMachine.MachineName} - {coffeeMachine.quantity}
@@ -307,11 +319,11 @@ export default {
                                                         გაყიდული
                                                     </h6>
                                                     {
-                                                        (meamaCollectObj.sold.capsules?.length > 0) ?
+                                                        (meamaLocationObj.sold.capsules?.length > 0) ?
                                                         (
                                                             <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                 {
-                                                                    meamaCollectObj.sold.capsules.map((capsule, i) => (
+                                                                    meamaLocationObj.sold.capsules.map((capsule, i) => (
                                                                         <li key={i}>
                                                                             <p class="standard-text-size">
                                                                                 {capsule.capsuleName} - {capsule.quantity}
@@ -338,11 +350,11 @@ export default {
                                                         მარაგში
                                                     </h6>
                                                     {
-                                                        (meamaCollectObj.stock.capsules?.length > 0) ?
+                                                        (meamaLocationObj.stock.capsules?.length > 0) ?
                                                         (
                                                             <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                 {
-                                                                    meamaCollectObj.stock.capsules.map((capsule, i) => (
+                                                                    meamaLocationObj.stock.capsules.map((capsule, i) => (
                                                                         <li key={i}>
                                                                             <p class="standard-text-size">
                                                                                 {capsule.capsuleName} - {capsule.quantity}
@@ -368,7 +380,7 @@ export default {
                                     }}>
                                     </Accordion>
                                     {
-                                        ([1, 3].includes(meamaCollectObj.type.typeID)) && 
+                                        ([1, 3].includes(meamaLocationObj.type.typeID)) && 
                                         (
                                             <div>
                                                 <hr/>
@@ -387,11 +399,11 @@ export default {
                                                                     გაყიდული
                                                                 </h6>
                                                                 {
-                                                                    (meamaCollectObj.sold.accessories?.length > 0) ?
+                                                                    (meamaLocationObj.sold.accessories?.length > 0) ?
                                                                     (
                                                                         <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                             {
-                                                                                meamaCollectObj.sold.accessories.map((accessory, i) => (
+                                                                                meamaLocationObj.sold.accessories.map((accessory, i) => (
                                                                                     <li key={i}>
                                                                                         <p class="standard-text-size">
                                                                                             {accessory.accessoryName} - {accessory.quantity}
@@ -418,11 +430,11 @@ export default {
                                                                     მარაგში
                                                                 </h6>
                                                                 {
-                                                                    (meamaCollectObj.stock.accessories?.length > 0) ?
+                                                                    (meamaLocationObj.stock.accessories?.length > 0) ?
                                                                     (
                                                                         <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                             {
-                                                                                meamaCollectObj.stock.accessories.map((accessory, i) => (
+                                                                                meamaLocationObj.stock.accessories.map((accessory, i) => (
                                                                                     <li key={i}>
                                                                                         <p class="standard-text-size">
                                                                                             {accessory.accessoryName} - {accessory.quantity}
@@ -451,7 +463,7 @@ export default {
                                         )
                                     }
                                     {
-                                        ([1, 3].includes(meamaCollectObj.type.typeID)) && 
+                                        ([1, 3].includes(meamaLocationObj.type.typeID)) && 
                                         (
                                             <div>
                                                 <hr/>
@@ -470,11 +482,11 @@ export default {
                                                                     გაყიდული
                                                                 </h6>
                                                                 {
-                                                                    (meamaCollectObj.sold.classicalCoffee?.length > 0) ?
+                                                                    (meamaLocationObj.sold.classicalCoffee?.length > 0) ?
                                                                     (
                                                                         <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                             {
-                                                                                meamaCollectObj.sold.classicalCoffee.map((classicalCoffee, i) => (
+                                                                                meamaLocationObj.sold.classicalCoffee.map((classicalCoffee, i) => (
                                                                                     <li key={i}>
                                                                                         <p class="standard-text-size">
                                                                                             {classicalCoffee.classicalCoffeeName} - {classicalCoffee.quantity}
@@ -501,11 +513,11 @@ export default {
                                                                     მარაგში
                                                                 </h6>
                                                                 {
-                                                                    (meamaCollectObj.stock.classicalCoffee?.length > 0) ?
+                                                                    (meamaLocationObj.stock.classicalCoffee?.length > 0) ?
                                                                     (
                                                                         <ol class="d-flex flex-column align-items-stretch common-primary-decimal-ol-style">
                                                                             {
-                                                                                meamaCollectObj.stock.classicalCoffee.map((classicalCoffee, i) => (
+                                                                                meamaLocationObj.stock.classicalCoffee.map((classicalCoffee, i) => (
                                                                                     <li key={i}>
                                                                                         <p class="standard-text-size">
                                                                                             {classicalCoffee.classicalCoffeeName} - {classicalCoffee.quantity}
@@ -547,11 +559,11 @@ export default {
                                         additionalInfo: () => (
                                             <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
                                                 {
-                                                    (meamaCollectObj.complaints?.length > 0) ?
+                                                    (meamaLocationObj.complaints?.length > 0) ?
                                                     (
                                                         <ol class="d-flex flex-column align-items-stretch row-gap-2 w-100 common-primary-decimal-ol-style">
                                                             {
-                                                                meamaCollectObj.complaints.map((complaint, i) => (
+                                                                meamaLocationObj.complaints.map((complaint, i) => (
                                                                     <li key={i} class="primary-li-style extra-small-text-size">
                                                                         <article class="d-flex flex-column row-gap-1 align-items-stretch">
                                                                             <div class="d-flex align-items-center justify-content-between">
@@ -592,7 +604,9 @@ export default {
                 // }
                 );
                 return {
-                    ...meamaCollectObj,
+                    ...meamaLocationObj,
+                    voronoiName: "georgia",
+                    worldCoordinateLimits: [155.3727744, 92.83429901034376, 162.22592426666665, 96.47090904724845], // georgia limits
                     markerAppFactory: markerAppFactory,
                 };
 
