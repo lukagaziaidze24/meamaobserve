@@ -120,7 +120,7 @@ export default {
                         tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaCollects, collectIcon));
                         break;
                     case 2:
-                        tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaDroppers, vendingMachine));
+                        // tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaDroppers, vendingMachine));
                         break;
                     case 3:
                         tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaSpaces, spaceIcon));
@@ -143,7 +143,7 @@ export default {
                                 <div class="d-flex flex-column align-items-stretch">
                                     <article class="d-flex align-items-start justify-content-between">
                                         <div class="d-flex flex-column align-items-start">
-                                            <div class="d-flex align-items-center gap-3">
+                                            <div class="d-flex align-items-center gap-3 pe-5">
                                                 <h5 class="large-text-size">
                                                     {meamaLocationObj.type.typeName}
                                                 </h5>
@@ -605,8 +605,9 @@ export default {
                 );
                 return {
                     ...meamaLocationObj,
-                    voronoiName: "georgia",
-                    worldCoordinateLimits: [155.3727744, 92.83429901034376, 162.22592426666665, 96.47090904724845], // georgia limits
+                    voronoiName: "tbilisi",
+                    // worldCoordinateLimits: [155.3727744, 92.83429901034376, 162.22592426666665, 96.47090904724845], // georgia limits xmin ymin xmax ymax
+                    worldCoordinateLimits: [159.77230862222223, 95.20052005183214, 160.01840284444444, 95.38899674365818], // tbilisi limits
                     markerAppFactory: markerAppFactory,
                 };
 

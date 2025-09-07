@@ -2,14 +2,14 @@
     {
         "type": {
             "typeID": 3,
-            "typeName": "Meama Space"
+            "typeName": "Meama Space - Coffee Store"
         },
-        "address": "agmasheneblis 12",
+        "address": "დავით აღმაშენებლის ხეივანი მე-16 კმ თბილისი, 0131",
         "phone": "551312950",
         "email": "lukagaziaidze@gmail.com",
         "latLng": {
-            "lat": 42.00674161706719,
-            "lng": 44.170112500000015
+            "lat": 41.81734100890977,
+            "lng": 44.772573264834406
         },
         "sold": {
             "quantity": 22,
@@ -168,14 +168,180 @@
     {
         "type": {
             "typeID": 3,
-            "typeName": "Meama Space"
+            "typeName": "მეამა სივრცე - East Point"
         },
-        "address": "bakhtrionis 112",
+        "address": "2 ალექსანდრე თვალჭრელიძის ქუჩა, თბილისი 0182",
         "phone": "551312950",
         "email": "lukagaziaidze@gmail.com",
         "latLng": {
-            "lat": 42.21679161706719,
-            "lng": 43.990192500000015
+            "lat": 41.69089941947566,
+            "lng": 44.896579132871224
+        },
+        "sold": {
+            "quantity": 33,
+            "quantityPercentage": 45,
+            "price": 49,
+            "pricePercentage": 67,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
+                }
+            ]
+        },
+        "complaints": [
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასათანადო მომსახურება ბარისტასგან"
+            },
+            {
+                "claimantName": "ნიკა აბაშიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "მოუწესრიგებელი გარემო"
+            },
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასწორი პროდუქტის შემოთავაზება"
+            }
+        ]
+    },
+    {
+        "type": {
+            "typeID": 3,
+            "typeName": "Meama Space - Coffee Store"
+        },
+        "address": "1 პეტრე ქავთარაძე, თბილისი",
+        "phone": "551312950",
+        "email": "lukagaziaidze@gmail.com",
+        "latLng": {
+            "lat": 41.72427247248251,
+            "lng": 44.73727573815761
         },
         "sold": {
             "quantity": 33,

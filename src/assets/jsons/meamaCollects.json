@@ -2,15 +2,15 @@
     {
         "type": {
             "typeID": 1,
-            "typeName": "Meama Collect",
+            "typeName": "Meama Collect Kartozia street",
             "isFranchise": true
         },
-        "address": "agmasheneblis 12",
+        "address": "Kartozia N8 (M2 block)",
         "phone": "551312950",
         "email": "lukagaziaidze@gmail.com",
         "latLng": {
-            "lat": 42.01674161706719,
-            "lng": 44.070112500000015
+            "lat": 41.72296197730774,
+            "lng": 44.750499999999995
         },
         "sold": {
             "quantity": 20,
@@ -169,15 +169,850 @@
     {
         "type": {
             "typeID": 1,
-            "typeName": "Meama Collect",
+            "typeName": "Meama Collect Bukia garden",
             "isFranchise": false
         },
-        "address": "bakhtrionis 112",
+        "address": "Bakhtrioni street N1",
         "phone": "551312950",
         "email": "lukagaziaidze@gmail.com",
         "latLng": {
-            "lat": 42.11679161706719,
-            "lng": 44.570192500000015
+            "lat": 41.72127549007287,
+            "lng":  44.774401484656615
+        },
+        "sold": {
+            "quantity": 20,
+            "quantityPercentage": 30,
+            "price": 49,
+            "pricePercentage": 5,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
+                }
+            ]
+        },
+        "complaints": [
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასათანადო მომსახურება ბარისტასგან"
+            },
+            {
+                "claimantName": "ნიკა აბაშიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "მოუწესრიგებელი გარემო"
+            },
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასწორი პროდუქტის შემოთავაზება"
+            }
+        ]
+    },
+    {
+        "type": {
+            "typeID": 1,
+            "typeName": "Meama Collect Abashidze Street",
+            "isFranchise": true
+        },
+        "address": "Tbilisi Abashidze st. 65-67",
+        "phone": "551312950",
+        "email": "lukagaziaidze@gmail.com",
+        "latLng": {
+            "lat": 41.70862049051592,
+            "lng": 44.7570099
+        },
+        "sold": {
+            "quantity": 20,
+            "quantityPercentage": 36,
+            "price": 134,
+            "pricePercentage": 27,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
+                }
+            ]
+        },
+        "complaints": [
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასათანადო მომსახურება ბარისტასგან"
+            },
+            {
+                "claimantName": "ნიკა აბაშიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "მოუწესრიგებელი გარემო"
+            },
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასწორი პროდუქტის შემოთავაზება"
+            }
+        ]
+    },
+    {
+        "type": {
+            "typeID": 1,
+            "typeName": "Meama Collect Paliashvili Street",
+            "isFranchise": false
+        },
+        "address": "Tbilisi, Paliashvili street N36",
+        "phone": "551312950",
+        "email": "lukagaziaidze@gmail.com",
+        "latLng": {
+            "lat": 41.70824622859811,
+            "lng":  44.770600371164136
+        },
+        "sold": {
+            "quantity": 20,
+            "quantityPercentage": 30,
+            "price": 49,
+            "pricePercentage": 5,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
+                }
+            ]
+        },
+        "complaints": [
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასათანადო მომსახურება ბარისტასგან"
+            },
+            {
+                "claimantName": "ნიკა აბაშიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "მოუწესრიგებელი გარემო"
+            },
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასწორი პროდუქტის შემოთავაზება"
+            }
+        ]
+    },
+    {
+        "type": {
+            "typeID": 1,
+            "typeName": "Meama Collect Sheni Sakhli Jiqiaze",
+            "isFranchise": true
+        },
+        "address": "Tbilisi Politkovskaia Street 3",
+        "phone": "551312950",
+        "email": "lukagaziaidze@gmail.com",
+        "latLng": {
+            "lat": 41.7209257920492,
+            "lng": 44.71470097116414
+        },
+        "sold": {
+            "quantity": 20,
+            "quantityPercentage": 36,
+            "price": 134,
+            "pricePercentage": 27,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
+                }
+            ]
+        },
+        "complaints": [
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასათანადო მომსახურება ბარისტასგან"
+            },
+            {
+                "claimantName": "ნიკა აბაშიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "მოუწესრიგებელი გარემო"
+            },
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასწორი პროდუქტის შემოთავაზება"
+            }
+        ]
+    },
+    {
+        "type": {
+            "typeID": 1,
+            "typeName": "Meama Collect Beliashvili",
+            "isFranchise": false
+        },
+        "address": "Akaki Baqradze Street 1",
+        "phone": "551312950",
+        "email": "lukagaziaidze@gmail.com",
+        "latLng": {
+            "lat": 41.7539167,
+            "lng":  44.77801707116415
+        },
+        "sold": {
+            "quantity": 20,
+            "quantityPercentage": 30,
+            "price": 49,
+            "pricePercentage": 5,
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 20
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 22
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 4
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 11
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 25
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 9
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 13
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity":18
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 5
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 44
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 38
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 21
+                }
+            ]
+        },
+        "stock": {
+            "coffeeMachines": [
+                {
+                    "MachineName": "ვერსეტაილი",
+                    "quantity": 46
+                },
+                {
+                    "MachineName": "მულტიკაფსულა",
+                    "quantity": 11
+                },
+                {
+                    "MachineName": "ესპრესო",
+                    "quantity": 8
+                },
+                {
+                    "MachineName": "კაპუჩინატორი",
+                    "quantity": 24
+                }
+            ],
+            "capsules": [
+                {
+                    "capsuleName": "ესპრესო & ლუნგო",
+                    "quantity": 12
+                },
+                {
+                    "capsuleName": "ფილტრის ყავა",
+                    "quantity": 17
+                },
+                {
+                    "capsuleName": "ჩაი & ნაყენი",
+                    "quantity": 45
+                },
+                {
+                    "capsuleName": "გემოების ნაკრები",
+                    "quantity": 4
+                }
+            ],
+            "accessories": [
+                {
+                    "accessoryName": "ჭიქა",
+                    "quantity": 26
+                },
+                {
+                    "accessoryName": "ჰოლდერი",
+                    "quantity": 6
+                },
+                {
+                    "accessoryName": "აპარატის მოვლა",
+                    "quantity": 4
+                }
+            ],
+            "classicalCoffee": [
+                {
+                    "classicalCoffeeName": "ნალექიანი",
+                    "quantity": 26
+                },
+                {
+                    "classicalCoffeeName": "პაკეტები",
+                    "quantity": 6
+                },
+                {
+                    "classicalCoffeeName": "მარცვალი",
+                    "quantity": 4
+                }
+            ]
+        },
+        "complaints": [
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასათანადო მომსახურება ბარისტასგან"
+            },
+            {
+                "claimantName": "ნიკა აბაშიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "მოუწესრიგებელი გარემო"
+            },
+            {
+                "claimantName": "ლუკა ბახტურიძე",
+                "claimantPhone": "551312950",
+                "complaintContent": "არასწორი პროდუქტის შემოთავაზება"
+            }
+        ]
+    },
+    {
+        "type": {
+            "typeID": 1,
+            "typeName": "Meama Collect Aghmashenebeli Alley",
+            "isFranchise": false
+        },
+        "address": "123 David Aghmashenebeli Alley",
+        "phone": "551312950",
+        "email": "lukagaziaidze@gmail.com",
+        "latLng": {
+            "lat": 41.81270130000001,
+            "lng":  44.772542942328315
         },
         "sold": {
             "quantity": 20,

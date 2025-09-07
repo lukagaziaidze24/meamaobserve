@@ -58,60 +58,15 @@ export default {
     },
     mounted() {
         this.loadMapsJavascriptApi();
-        // this.testVoronoiDiagram();
     },
     methods: {
-        testVoronoiDiagram(){
-            // const delaunay = d3.Delaunay.from([[0, 0], [0, 100], [100, 0], [65.67111111111112, 95.17492654697409], [150, 150], [200, 200], [180, 200], [75, 135]]);
-            // const voronoi = delaunay.voronoi([0, 0, 640, 480]);
-
-            // console.log(voronoi.cellPolygons(3));
-            
-            
-            // let canvas = document.getElementById("voronoi");
-            // var context = canvas.getContext("2d");
-            
-            // // Clear
-            // context.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // // Set stroke style so you can see lines
-            // context.strokeStyle = "black";  
-            // context.lineWidth = 1;
-
-            // // Draw voronoi edges
-            // voronoi.render(context);
-              
-
-
-
-
-            // context.stroke();
-            // context.fillStyle = "red";
-            // // for(let i = 0; i < delaunay.points.length; i+=2){
-            // //     let x = delaunay.points[i];
-            // //     let y = delaunay.points[i + 1];
-            // //     context.beginPath();
-            // //     context.arc(x, y, 4, 0, 2 * Math.PI);
-            // //     context.fill();
-            // // };
-
-            // console.log(voronoi.cellPolygon(2));
-            // voronoi.cellPolygon(2).forEach((location) => {
-
-            //     context.beginPath();
-            //     context.arc(location[0], location[1], 4, 0, 2 * Math.PI);
-            //     context.fill();
-            // });
-
-        },
-        
         drawSinglePolygon(coordinatesArray){
             const polygon = new google.maps.Polygon({
                 paths: coordinatesArray,
-                strokeColor: "#FF0000",
+                strokeColor: getComputedStyle(document.documentElement).getPropertyValue('--primary-background-color'),
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
-                fillColor: "#FF0000",
+                fillColor: "#8ee4e6",
                 fillOpacity: 0.35,
             });
 
@@ -163,6 +118,28 @@ export default {
             this.loadedVoronoiDiagramsPolygonArraysObj = {};
         },
         renderVoronoiDiagram(){
+            // 41.625367, 44.679809    qveda marcxena
+            // 41.823185, 45.025879   zeda marjvena
+
+
+            // console.log(this.getWorldCoordinateFromLatLng(41.625367, 44.679809)); // 159.77230862222223, 95.38899674365818
+            // console.log(this.getWorldCoordinateFromLatLng(41.823185, 45.025879)); // 160.01840284444444, 95.20052005183214
+
+
+            // 41.72296197730774, 44.750499999999995   Kartozia street, Kartozia N8 (M2 block) *
+            // 41.72127549007287, 44.774401484656615   Bukia garden, Bakhtrioni street N1
+            // 41.70862049051592, 44.7570099     Abashidze Street, Tbilisi Abashidze st. 65-67
+            // 41.70824622859811, 44.770600371164136      Paliashvili Street, Tbilisi, Paliashvili street N36
+            // 41.7209257920492, 44.71470097116414      Sheni sakhli jiqiaze,  Tbilisi Politkovskaia Street 3
+            // 41.7539167, 44.77801707116415     Beliashvili,   Akaki Baqradze Street 1
+            //  41.81270130000001, 44.772542942328315      Meama Collect • Aghmashenebeli Alley,    123 David Aghmashenebeli Alley |
+            
+
+            // meama spaces
+            // 41.81734100890977, 44.772573264834406     Meama Space - Coffee Store,  დავით აღმაშენებლის ხეივანი მე-16 კმ თბილისი, 0131
+            // 41.69089941947566, 44.896579132871224     მეამა სივრცე - East Point,    2 ალექსანდრე თვალჭრელიძის ქუჩა, თბილისი 0182
+            // 41.72427247248251, 44.73727573815761      Meama Space - Coffee Store,   1 პეტრე ქავთარაძე, თბილისი
+
             this.removeVoronoiDiagrams();
             this.loadedMarkersWorldCoordinatesArraysLocalObj = {};
             this.loadedVoronoiDiagramsPolygonArraysObj = {};
@@ -188,7 +165,7 @@ export default {
                     }
                     this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey].push(
                         this.drawSinglePolygon(
-                            voronoi.cellPolygon(i).map((worldCoordinateFromVoronoi) => {
+                            voronoi.cellPolygon(i)?.map((worldCoordinateFromVoronoi) => {
                                 return this.getLatLngFromWorldCoordinates(worldCoordinateFromVoronoi[0], worldCoordinateFromVoronoi[1])
                             })
                         )
