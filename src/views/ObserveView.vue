@@ -120,7 +120,7 @@ export default {
                         tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaCollects, collectIcon));
                         break;
                     case 2:
-                        // tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaDroppers, vendingMachine));
+                        tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaDroppers, vendingMachine));
                         break;
                     case 3:
                         tempArray.push(...this.getMeamaCollectsWithMarkerJSXInnerHtml(meamaSpaces, spaceIcon));
