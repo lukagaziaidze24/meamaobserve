@@ -137,7 +137,8 @@ export default {
         getMeamaCollectsWithMarkerJSXInnerHtml(meamaLocations, icon){
             return meamaLocations.map((meamaLocationObj) => {
                 const markerAppFactory = () => createApp(() => (
-                    <MapMarkerComponent markerIconAddress={icon}
+                    // onTouchstart={() => console.log("lukitto")} this is how can you add events in the jsx
+                    <MapMarkerComponent markerIconAddress={icon} 
                         v-slots={{
                             markerDetailedInfo: () => (
                                 <div class="d-flex flex-column align-items-stretch">

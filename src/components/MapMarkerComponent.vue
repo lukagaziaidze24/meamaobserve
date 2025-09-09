@@ -1,5 +1,5 @@
 <template>
-<div ref="mapMarkerWrapper" class="map-marker-wrapper" @click="markerClickHandler($event)">
+<div ref="mapMarkerWrapper" class="map-marker-wrapper" @click="markerClickHandler($event)" @touchstart.stop @touchend.stop @touchmove.stop @touchcancel.stop>
     <img class="map-marker-icon" width="32px" height="32px" :src="markerIconAddress" alt="meama collect">
 
 
