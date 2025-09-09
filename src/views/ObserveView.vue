@@ -6,18 +6,18 @@
             </PrimaryMapComponent>
         </main>
         <aside class="map-side-navigation-wrapper py-4">
-            <ul class="d-flex flex-column align-items-center w-100 gap-3">
-                <li class="w-100" v-for="(data, i) of mapNavigationData" v-on:click="mapNavigationClickHandler(data)">
+            <ul class="d-flex flex-row flex-sm-column align-items-center justify-content-around flex-wrap w-100 gap-2 gap-sm-3">
+                <li v-for="(data, i) of mapNavigationData" v-on:click="mapNavigationClickHandler(data)">
                     <LeftGrowingAccordion>
                         <template v-slot:growingPart>
                             <div class="d-flex align-items-center h-100 br-25 p-2" style="background-color: var(--primary-background-color);">
-                                <p class="standard-text-size white-text" style="text-align: center;">
+                                <p class="standard-text-size white-text restrict-wrap" style="text-align: center;">
                                     {{ data.name }}
                                 </p>
                             </div>
                         </template>
                         <template v-slot:basePart>
-                            <div :class="['map-side-navigation-button', {'choosen': data.isChoosen}, 'd-flex', 'align-item-center', 'justify-content-center', 'p-2', 'br-20']">
+                            <div :class="['map-side-navigation-button', {'choosen': data.isChoosen}, 'd-flex', 'align-item-center', 'justify-content-center', 'p-sm-2', 'px-3', 'py-2', 'br-20']">
                                 <img width="36px" height="36px" :src="require(`@/assets/images/mapNavigation/${data.icon}`)" :alt="data.name">
                             </div>
                         </template>
@@ -143,7 +143,7 @@ export default {
                                 <div class="d-flex flex-column align-items-stretch">
                                     <article class="d-flex align-items-start justify-content-between">
                                         <div class="d-flex flex-column align-items-start">
-                                            <div class="d-flex align-items-center gap-3 pe-5">
+                                            <div class="d-flex align-items-center gap-3 pe-5 w-100">
                                                 <h5 class="large-text-size">
                                                     {meamaLocationObj.type.typeName}
                                                 </h5>
@@ -156,17 +156,17 @@ export default {
                                                     )
                                                 }
                                             </div>
-                                            <p class="standard-text-size">
+                                            <p class="standard-text-size pe-5 w-100">
                                                 {meamaLocationObj.address}
                                             </p>
-                                            <div class="d-flex align-items-center column-gap-3">
-                                                <article class="d-flex align-items-center gap-1">
+                                            <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center column-gap-3 w-100">
+                                                <article class="d-flex align-items-end gap-1">
                                                     <h6 class="standard-text-size">ტელ:</h6>
                                                     <p class="extra-small-text-size">
                                                         {meamaLocationObj.phone}
                                                     </p>
                                                 </article>
-                                                <article class="d-flex align-items-center gap-1">
+                                                <article class="d-flex align-items-end gap-1">
                                                     <h6 class="standard-text-size">email:</h6>
                                                     <p class="extra-small-text-size">
                                                         {meamaLocationObj.email}
@@ -227,14 +227,14 @@ export default {
                                                 <hr/>
                                                 <Accordion v-slots={{
                                                     accordionHeader: () => (
-                                                        <div class="d-flex align-items-center px-3 py-1">
+                                                        <div class="d-flex align-items-center px-2 px-sm-3 py-1">
                                                             <h5 class="before-large-text-size">
                                                                 აპარატები
                                                             </h5>
                                                         </div>
                                                     ),
                                                     additionalInfo: () => (
-                                                        <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                                        <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-start justify-content-between row-gap-2 px-2 px-sm-3 py-2">
                                                             <article class="d-flex flex-column column-gap-2">
                                                                 <h6 class="after-standard-text-size">
                                                                     გაყიდული
@@ -306,14 +306,14 @@ export default {
                                     <hr/>
                                     <Accordion v-slots={{
                                         accordionHeader: () => (
-                                            <div class="d-flex align-items-center px-3 py-1">
+                                            <div class="d-flex align-items-center px-2 px-sm-3 py-1">
                                                 <h5 class="before-large-text-size">
                                                     კაფსულები
                                                 </h5>
                                             </div>
                                         ),
                                         additionalInfo: () => (
-                                            <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                            <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-start justify-content-between row-gap-2 px-2 px-sm-3 py-2">
                                                 <article class="d-flex flex-column column-gap-2">
                                                     <h6 class="after-standard-text-size">
                                                         გაყიდული
@@ -386,14 +386,14 @@ export default {
                                                 <hr/>
                                                 <Accordion v-slots={{
                                                     accordionHeader: () => (
-                                                        <div class="d-flex align-items-center px-3 py-1">
+                                                        <div class="d-flex align-items-center px-2 px-sm-3 py-1">
                                                             <h5 class="before-large-text-size">
                                                                 აქსესუარები
                                                             </h5>
                                                         </div>
                                                     ),
                                                     additionalInfo: () => (
-                                                        <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                                        <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-start justify-content-between row-gap-2 px-2 px-sm-3 py-2">
                                                             <article class="d-flex flex-column column-gap-2">
                                                                 <h6 class="after-standard-text-size">
                                                                     გაყიდული
@@ -469,14 +469,14 @@ export default {
                                                 <hr/>
                                                 <Accordion v-slots={{
                                                     accordionHeader: () => (
-                                                        <div class="d-flex align-items-center px-3 py-1">
+                                                        <div class="d-flex align-items-center px-2 px-sm-3 py-1">
                                                             <h5 class="before-large-text-size">
                                                                 კლასიკური ყავა
                                                             </h5>
                                                         </div>
                                                     ),
                                                     additionalInfo: () => (
-                                                        <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                                        <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-start justify-content-between row-gap-2 px-2 px-sm-3 py-2">
                                                             <article class="d-flex flex-column column-gap-2">
                                                                 <h6 class="after-standard-text-size">
                                                                     გაყიდული
@@ -550,14 +550,14 @@ export default {
                                     <hr/>
                                     <Accordion v-slots={{
                                         accordionHeader: () => (
-                                            <div class="d-flex align-items-center px-3 py-1">
+                                            <div class="d-flex align-items-center px-2 px-sm-3 py-1">
                                                 <h5 class="before-large-text-size">
                                                     საჩივრები
                                                 </h5>
                                             </div>
                                         ),
                                         additionalInfo: () => (
-                                            <div class="d-flex align-items-start justify-content-between row-gap-2 px-3 py-2">
+                                            <div class="d-flex align-items-start justify-content-between row-gap-2 px-2 px-sm-3 py-2">
                                                 {
                                                     (meamaLocationObj.complaints?.length > 0) ?
                                                     (
@@ -655,6 +655,16 @@ export default {
     grid-template-columns: 1fr 7%;
     grid-template-rows: 1fr;
     height: 100dvh;
+    @include mediaPattern1(xxl){
+        grid-template-columns: 1fr 9%;
+    }
+    @include mediaPattern1(lg){
+        grid-template-columns: 1fr 12%;
+    }
+    @include mediaPattern1(extra-small){
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+    }
     .map-wrapper{
         background-color: var(--secondary-background-color);
         height: 100%;
@@ -662,6 +672,12 @@ export default {
     .map-side-navigation-wrapper{
         background-color: var(--primary-background-color);
         height: 100%;
+        ul li{
+            width: 100%;
+            @include mediaPattern1(extra-small){
+                width: auto;
+            }
+        }
         .map-side-navigation-button{
             transition: all 0.1s ease-out;
             background-color: gray;
@@ -676,6 +692,13 @@ export default {
             &:hover img{
                 transform: scale(1.2);
             }
+            @include mediaPattern1(extra-small){
+                width: 100%;
+                margin: 0;
+            }
+        }
+        @include mediaPattern1(extra-small){
+            grid-row: 2 / 3;
         }
     }
 }

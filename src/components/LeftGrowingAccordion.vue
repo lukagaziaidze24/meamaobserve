@@ -53,8 +53,10 @@ export default{
         width: 100%;
         background-color: var(--background-color);
     }
-    &:hover .grow-part-wrapper{
-        grid-template-columns: 1fr;
+    @media (hover: hover){
+        &:hover .grow-part-wrapper{
+            grid-template-columns: 1fr;
+        }
     }
 }
 </style>

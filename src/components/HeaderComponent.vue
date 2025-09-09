@@ -15,8 +15,12 @@
     top: 0.2em;
     left: 0.2em;
     display: flex;
-    column-gap: 0.4em;
+    column-gap: 0.3em;
     padding: 0.3em 0.4em;
+    @include mediaPattern1(lg){
+        padding: 0.2em 0.3em;
+    }
+
     cursor: pointer;
     background-color: var(--secondary-background-color);
     .hover-background{
@@ -29,11 +33,21 @@
         z-index: -1;
         transition: all 0.3s ease-out;
     }
-    &:hover > .hover-background{
-        width: 100%;
+    @media (hover: hover){
+        &:hover > .hover-background{
+            width: 100%;
+        }
     }
     .logo, p{
         mix-blend-mode: difference;
+    }
+    .logo{
+        @include mediaPattern1(xxl){
+            height: 28px;
+        }
+        @include mediaPattern1(lg){
+            height: 26px;
+        }
     }
     p{
         border-left: 5px solid var(--secondary-background-color);

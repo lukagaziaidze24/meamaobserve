@@ -1,0 +1,106 @@
+@mixin mediaPattern1($breakpoint){
+    @if $breakpoint == xxl{
+        @media (max-width: 1400px){
+            @content;
+        }
+    }
+    @if $breakpoint == lg{
+        @media (max-width: 992px){
+            @content;
+        }
+    }
+    @if $breakpoint == extra-small{
+        @media (max-width: 576px){
+            @content;
+        }
+    }
+}
+
+
+
+
+.extra-small-text-size{
+    @include mediaPattern1(xxl){
+        font-family: "roboto-400";
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 300;
+    }
+    @include mediaPattern1(lg){
+        font-family: "roboto-400";
+        font-size: 13px;
+        line-height: 13px;
+        font-weight: 300;
+    }
+}
+.standard-text-size{
+    @include mediaPattern1(xxl){
+        font-family: "roboto-400";
+        font-size: 17px;
+        line-height: 19px;
+        font-weight: 500;
+    }
+    @include mediaPattern1(lg){
+        font-family: "roboto-400";
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 500;
+    }
+}
+.after-standard-text-size{
+    @include mediaPattern1(xxl){
+        font-family: "roboto-400";
+        font-size: 17px;
+        line-height: 19px;
+        font-weight: 600;
+    }
+    @include mediaPattern1(lg){
+        font-family: "roboto-400";
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 600;
+    }
+}
+.before-large-text-size{
+    @include mediaPattern1(xxl){
+        font-family: "roboto-400";
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 600;
+    }
+    @include mediaPattern1(lg){
+        font-family: "roboto-400";
+        font-size: 19px;
+        line-height: 21px;
+        font-weight: 600;
+    }
+}
+.large-text-size{
+    @include mediaPattern1(xxl){
+        font-family: "roboto-700";
+        font-size: 24px;
+        line-height: 26px;
+        font-weight: 700;
+    }
+    @include mediaPattern1(lg){
+        font-family: "roboto-700";
+        font-size: 23px;
+        line-height: 25px;
+        font-weight: 700;
+    }
+}
+
+.extra-large-text-size{
+    @include mediaPattern1(xxl){
+        font-family: "roboto-800";
+        font-size: 28px;
+        line-height: 30px;
+        font-weight: 800;
+    }
+    @include mediaPattern1(lg){
+        font-family: "roboto-800";
+        font-size: 25px;
+        line-height: 27px;
+        font-weight: 800;
+    }
+}
