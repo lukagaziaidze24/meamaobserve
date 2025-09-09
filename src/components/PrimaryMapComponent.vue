@@ -1,9 +1,6 @@
 <template>
 <div id="map" :style="[{'--height': mapHeight}]">
 </div>
-<!-- <canvas id="voronoi" width="500" height="960" style="border: 2px solid black;">
-
-</canvas> -->
 </template>
 <script lang="jsx">
 import { Loader } from "@googlemaps/js-api-loader";
@@ -254,17 +251,23 @@ export default {
                     zIndex: 1,
                 });
 
-                marker.addEventListener('mouseenter', (event) => {
-                    if(marker.zIndex == 1){
-                        marker.zIndex = 2;
-                    }
-                    toRaw(this.map).setOptions({ // makes map untouchable
-                        gestureHandling: "none",
-                        clickableIcons: false,
-                    });
+                ['mouseenter', 'touchstart'].forEach((eventName) => {
                     
+                    marker.addEventListener(eventName, (event) => {
+                    console.log(eventName);
+                        if(marker.zIndex == 1){
+                            marker.zIndex = 2;
+                        }
+                        toRaw(this.map).setOptions({ // makes map untouchable
+                            gestureHandling: "none",
+                            clickableIcons: false,
+                        });
+                    });
                 });
+                   
+                
                 marker.addEventListener('mouseleave', (event) => {
+                    console.log("mouseleave");
                     if(marker.zIndex == 2){
                         marker.zIndex = 1;
                     }
@@ -273,9 +276,27 @@ export default {
                         clickableIcons: true,
                     });
                 });
-                let index = this.loadedMarkersLocalArray.length;
                 
+                ['touchend', 'touchcancel'].forEach((eventName) => {
+                    marker.addEventListener(eventName, (event) => {
+                        setTimeout(() => {
+                            console.log(eventName);
+                            // if(marker.zIndex == 2){
+                            //     marker.zIndex = 1;
+                            // }
+                            toRaw(this.map).setOptions({ // makes map touchable
+                                gestureHandling: null,
+                                clickableIcons: true,
+                            });
+                        }, 200);
+                    });
+                });
+
+
+                let index = this.loadedMarkersLocalArray.length;
                 marker.addListener("gmp-click", (event) => { // first click event happens from component than comes this event listener
+                    console.log("click");
+                    
                     if(marker.zIndex == 3 && !marker.content.querySelector(".map-marker-wrapper").classList.contains("open")){
                         marker.zIndex = 1;
                     }else{
