@@ -17,8 +17,9 @@ export default {
             advancedMarker: null,
 
             loadedMarkersLocalArray: [],
+            loadedNewSiteMarkersLocalArray: [],
             loadedMarkersWorldCoordinatesArraysLocalObj: {},
-            loadedVoronoiDiagramsPolygonArraysObj: {}
+            loadedVoronoiDiagramsPolygonArraysObj: {},
         }
     },
     components: {
@@ -45,8 +46,12 @@ export default {
                     this.loadedMarkersLocalArray.forEach((marker) => {
                         marker.setMap(null);
                     });
+                    this.loadedNewSiteMarkersLocalArray.forEach((newSite) => {
+                        newSite.setMap(null);
+                    });
                    
                     this.loadedMarkersLocalArray = [];
+                    this.loadedNewSiteMarkersLocalArray = [];
                     this.loadMarkers();
                 }
             },
@@ -106,7 +111,7 @@ export default {
             this.loadedMarkersWorldCoordinatesArraysLocalObj = {};
             Object.keys(this.loadedVoronoiDiagramsPolygonArraysObj).forEach((voronoiNameKey) => {
                 this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey].forEach((polygon) => {
-                    google.maps.event.clearInstanceListeners(polygon);
+                    google.maps.event.clearInstanceListeners(toRaw(polygon));
                     toRaw(polygon).setMap(null);
                     // polygon = null;
                 });
@@ -141,31 +146,43 @@ export default {
             this.loadedMarkersWorldCoordinatesArraysLocalObj = {};
             this.loadedVoronoiDiagramsPolygonArraysObj = {};
             this.markersArray.forEach((markerObj, i) => {
-                if(!this.loadedMarkersWorldCoordinatesArraysLocalObj.hasOwnProperty(markerObj.voronoiName)){
-                    this.loadedMarkersWorldCoordinatesArraysLocalObj[markerObj.voronoiName] = {
+                if(!this.loadedMarkersWorldCoordinatesArraysLocalObj.hasOwnProperty(markerObj.voronoiNameKey)){
+                    this.loadedMarkersWorldCoordinatesArraysLocalObj[markerObj.voronoiNameKey] = {
                         points: [],
-                        limits: markerObj.worldCoordinateLimits,
+                        worldCoordinateLimits: [...markerObj.worldCoordinateLimits],
                     };
                 }
-                this.loadedMarkersWorldCoordinatesArraysLocalObj[markerObj.voronoiName].points.push(
+                this.loadedMarkersWorldCoordinatesArraysLocalObj[markerObj.voronoiNameKey].points.push(
                     this.getWorldCoordinateFromLatLng(markerObj.latLng.lat, markerObj.latLng.lng)
                 );
             });
             
             Object.keys(this.loadedMarkersWorldCoordinatesArraysLocalObj).forEach((voronoiNameKey) => {
                 const delaunay = d3.Delaunay.from(this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].points);
-                const voronoi = delaunay.voronoi(this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].limits);
+                const voronoi = delaunay.voronoi(this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].worldCoordinateLimits);
     
                 for(let i = 0; i < this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].points.length; i++){
                     if(!this.loadedVoronoiDiagramsPolygonArraysObj.hasOwnProperty(voronoiNameKey)){
                         this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey] = [];
                     }
+                    let singlePolygonCell = this.drawSinglePolygon(
+                        voronoi.cellPolygon(i)?.map((worldCoordinateFromVoronoi) => {
+                            return this.getLatLngFromWorldCoordinates(worldCoordinateFromVoronoi[0], worldCoordinateFromVoronoi[1])
+                        })
+                    )
+                    toRaw(singlePolygonCell).addListener("click", (e) => {
+                        this.$emit("newSiteOnMap", {
+                            worldCoordinateLimits: [...this.loadedMarkersWorldCoordinatesArraysLocalObj[voronoiNameKey].worldCoordinateLimits],
+                            voronoiNameKey: voronoiNameKey,
+                            latLng: {
+                                lat: e.latLng.lat(),
+                                lng: e.latLng.lng(),
+                            },
+                            isNewSite: true,
+                        });
+                    });
                     this.loadedVoronoiDiagramsPolygonArraysObj[voronoiNameKey].push(
-                        this.drawSinglePolygon(
-                            voronoi.cellPolygon(i)?.map((worldCoordinateFromVoronoi) => {
-                                return this.getLatLngFromWorldCoordinates(worldCoordinateFromVoronoi[0], worldCoordinateFromVoronoi[1])
-                            })
-                        )
+                        singlePolygonCell
                     );
                 }
 
@@ -243,6 +260,34 @@ export default {
             }
             this.markersArray.forEach((markerObj, i) => {
 
+                if(markerObj.isNewSite){
+                    
+                    let newSiteMarker = new this.advancedMarker({
+                        map: toRaw(this.map),
+                        position: markerObj.latLng,
+                        // content: this.buildMarkerContent(markerObj),
+                        title: "new Site",
+                        zIndex: 1,
+                        gmpClickable: true,
+                    });
+                    
+                    let newSiteIndex = this.loadedNewSiteMarkersLocalArray.length;
+
+                    newSiteMarker.addListener("gmp-click", (event) => { 
+                        // const { target } = event.domEvent;
+                        // console.log(target);
+                        
+                        // toRaw(this.loadedNewSiteMarkersLocalArray[newSiteIndex]).setMap(null);
+
+                        this.$emit("deleteSiteOnMap", {
+                            ...markerObj
+                        });
+                    });
+                    this.loadedNewSiteMarkersLocalArray.push(newSiteMarker);
+
+                    return;
+                }
+
                 const marker = new this.advancedMarker({
                     map: toRaw(this.map),
                     position: markerObj.latLng, 
@@ -254,7 +299,7 @@ export default {
                 ['mouseenter', 'touchstart'].forEach((eventName) => {
                     
                     marker.addEventListener(eventName, (event) => {
-                    console.log(eventName);
+                    // console.log(eventName);
                         if(marker.zIndex == 1){
                             marker.zIndex = 2;
                         }
@@ -267,7 +312,7 @@ export default {
                    
                 
                 marker.addEventListener('mouseleave', (event) => {
-                    console.log("mouseleave");
+                    // console.log("mouseleave");
                     if(marker.zIndex == 2){
                         marker.zIndex = 1;
                     }
@@ -280,7 +325,7 @@ export default {
                 ['touchend', 'touchcancel'].forEach((eventName) => {
                     marker.addEventListener(eventName, (event) => {
                         setTimeout(() => {
-                            console.log(eventName);
+                            // console.log(eventName);
                             // if(marker.zIndex == 2){
                             //     marker.zIndex = 1;
                             // }
@@ -295,7 +340,7 @@ export default {
 
                 let index = this.loadedMarkersLocalArray.length;
                 marker.addListener("gmp-click", (event) => { // first click event happens from component than comes this event listener
-                    console.log("click");
+                    // console.log("click");
                     
                     if(marker.zIndex == 3 && !marker.content.querySelector(".map-marker-wrapper").classList.contains("open")){
                         marker.zIndex = 1;

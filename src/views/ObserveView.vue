@@ -1,7 +1,7 @@
 <template>
     <div class="observer-page-wrapper">
         <main class="map-wrapper">
-            <PrimaryMapComponent :markersArray="meamaLocationsArray" :isVoronoiEnabled="isVoronoiEnabled">
+            <PrimaryMapComponent :markersArray="meamaLocationsArray" :isVoronoiEnabled="isVoronoiEnabled" @newSiteOnMap="addNewSiteInPoints" @deleteSiteOnMap="deleteSiteInPoints">
 
             </PrimaryMapComponent>
         </main>
@@ -59,6 +59,7 @@ export default {
 
             // for map markers>>
             meamaLocationsArray: [], 
+            newSitesArrayOnMap: [],
 
             // for voronoi >>
             isVoronoiEnabled: false,
@@ -108,6 +109,22 @@ export default {
             });
             return isQueryValid;
         },
+        deleteSiteInPoints(pointObj){
+            let newSiteIndexToBeDeleted = this.newSitesArrayOnMap.findIndex((newSiteObj) => {
+                if(newSiteObj.voronoiNameKey == pointObj.voronoiNameKey && newSiteObj.latLng.lat == pointObj.latLng.lat && newSiteObj.latLng.lng == pointObj.latLng.lng && newSiteObj.isNewSite == pointObj.isNewSite){
+                    return true;
+                }
+                return false;
+            });
+            let meamaLocationsArrayIndex = this.meamaLocationsArray.length - this.newSitesArrayOnMap.length + newSiteIndexToBeDeleted;
+            
+            this.newSitesArrayOnMap.splice(newSiteIndexToBeDeleted, 1);
+            this.meamaLocationsArray.splice(meamaLocationsArrayIndex, 1);
+        },
+        addNewSiteInPoints(pointObj){
+            this.newSitesArrayOnMap.push(pointObj);
+            this.meamaLocationsArray.push(this.newSitesArrayOnMap[this.newSitesArrayOnMap.length - 1]);
+        },
         getMeamaLocations(){
             this.meamaLocationsArray = [];
             let tempArray = [];
@@ -132,7 +149,7 @@ export default {
                         break;
                     }
                 });
-                this.meamaLocationsArray = [...tempArray];
+                this.meamaLocationsArray = [...tempArray].concat(this.newSitesArrayOnMap);
         },
         getMeamaCollectsWithMarkerJSXInnerHtml(meamaLocations, icon){
             return meamaLocations.map((meamaLocationObj) => {
@@ -606,10 +623,11 @@ export default {
                 );
                 return {
                     ...meamaLocationObj,
-                    voronoiName: "tbilisi",
+                    voronoiNameKey: "tbilisi",
                     // worldCoordinateLimits: [155.3727744, 92.83429901034376, 162.22592426666665, 96.47090904724845], // georgia limits xmin ymin xmax ymax
                     worldCoordinateLimits: [159.77230862222223, 95.20052005183214, 160.01840284444444, 95.38899674365818], // tbilisi limits
                     markerAppFactory: markerAppFactory,
+                    isNewSite: false,
                 };
 
 
