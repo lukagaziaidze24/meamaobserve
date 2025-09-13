@@ -12,6 +12,9 @@ const routes = [
         path: '/',
         component: ObserveView,
         name: ObserveView,
+        meta: {
+          title: "MEAMA Observe - Map",
+        },
       }
     ],
   },
@@ -30,5 +33,11 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  next(true);
+});
+
 
 export default router
